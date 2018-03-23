@@ -1,11 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-<<<<<<< HEAD
-import App from './App';
-=======
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
->>>>>>> config
 import registerServiceWorker from './registerServiceWorker';
 // Components
 import App from './App';
