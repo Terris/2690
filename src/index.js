@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import registerServiceWorker from './registerServiceWorker';
 // Components
-import App from './App';
+import Match from './components/Match.js';
 // Actions & Reducers
 import reducers from './reducers';
 // Create Store with Middleware
@@ -14,7 +14,7 @@ const store = createStoreWithMiddleware(reducers)
 ReactDOM.render(
   <Provider store={store}>
     <div>
-      <App />
+      <Match />
     </div>
   </Provider>
   , document.getElementById('root'));

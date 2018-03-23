@@ -1,0 +1,17 @@
+/*
+* Board.css
+* Styles for /components/Board.js
+*/
+
+.board {
+  border: 1rem solid #43404d;
+  width: 50vw;
+  height: 50vw;
+  display: flex;
+  flex-wrap: wrap;
+}
+.board:after{
+    content: "";
+    display: block;
+    padding-top: 100%;
+}

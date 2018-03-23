@@ -4,7 +4,6 @@
 * www.terrisjkremer.com
 */
 
-
 /* Base
 ================================================= */
 
@@ -13,6 +12,4 @@ html {
   font-size: 100%;
   -webkit-font-smoothing: antialiased;
 }
-body {
-  background: #62ad62;
-}
+html,body { background: #859654; }
