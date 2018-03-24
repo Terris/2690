@@ -1,0 +1,9 @@
+/*
+* piece.css
+* Styles for /components/Piece.js
+*/
+
+.piece {
+  position: absolute;
+  z-index: 9999;
+}

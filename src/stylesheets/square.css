@@ -4,6 +4,8 @@
 */
 
 .square {
+  position: relative;
+  
   text-align: center;
   height: 12.5%;
   width:  12.5%;

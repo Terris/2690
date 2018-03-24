@@ -6,7 +6,9 @@ class Match extends Component {
   render() {
     return (
       <div className="match">
-        <Board />
+        <div className="board_wrapper">
+          <Board />
+        </div>
       </div>
     );
   }
