@@ -4,10 +4,9 @@
 */
 
 .board {
-  margin: 10px auto;
   border: 1rem solid #43404d;
-  width: 50vw;
-  height: 50vw;
+  width: 600px;
+  height: 600px;
   display: flex;
   flex-wrap: wrap;
 }

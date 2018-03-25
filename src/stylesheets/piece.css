@@ -3,7 +3,6 @@
 * Styles for /components/Piece.js
 */
 
-.piece {
-  position: absolute;
-  z-index: 9999;
-}
+.piece { position: absolute; z-index: 9999; top: 0; bottom: 0; }
+.piece img { width:100%; padding: 10px; }
+.piece:hover { background: red; cursor: pointer; }
