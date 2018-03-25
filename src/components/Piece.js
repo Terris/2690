@@ -17,13 +17,11 @@ class Piece extends Component {
   }
 
   componentDidMount() {
-    var availableMoves = calculateMoves(this.props.piece.type, this.props.square.id);
-    // Remove squares with pieces
-    _.forIn(this.props.board, (value, key) => {
-      if(value.piece) {
-        _.pull(availableMoves, parseInt(key, 10) );
-      }
-    });
+    var availableMoves = calculateMoves(
+      this.props.piece.type, // The piece type
+      this.props.square.id, // The currentPosition
+      _.map( _.filter(this.props.board, s => { return s.piece !== ''  }), 'id') // occupied squares
+    );
 
     this.setState({
       availableMoves: availableMoves
@@ -38,10 +36,22 @@ class Piece extends Component {
     this.props.hideAvailableMoves();
   }
 
+  handleDragStart(e) {
+    console.log("dragging")
+  }
+  handleDragEnd(){
+    console.log("dropped")
+  }
+
+
   render() {
     return(
       <div className="piece" onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut}>
-        <img src={`/images/${this.props.piece.img}`} alt={this.props.piece.name} />
+        <img src={`/images/${this.props.piece.img}`} alt={this.props.piece.name}
+          draggable='true'
+          onDragStart={this.handleDragStart}
+          onDragEnd={this.handleDragEnd}
+        />
       </div>
     )
   }

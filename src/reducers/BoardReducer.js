@@ -15,8 +15,6 @@ export default function(state = {}, action) {
         state[value.id].available = false;
       });
       return {...state }
-    case boardConstants.UPDATE_BOARD:
-      return {...state, [action.payload.id]: action.payload }
     default:
       return state;
   }
