@@ -15,12 +15,14 @@ export const generateBoard = () => {
   // add [size] squares
   // to the Obj.board
   while(i <= size) {
-    board[i] = { id: i, piece: hasPiece(i) };
+    board[i] = { id: i, piece: hasPiece(i), available: false };
     i ++;
   }
   return board;
 }
 
+// pieceAxisPosition
+// given [position] returns a col and row
 export function pieceAxisPosition(position) {
   var row = Math.ceil( position / 8 );
   var col = 8 * ((position / 8 ) - (Math.ceil( (position - 8) / 8 )));
@@ -58,7 +60,7 @@ export function calculateMoves(piece, currentPos) {
           }
         }
       });
-      break;
+      return availableMoves;
     case piecesConstants.KNIGHT:
       // Algorithms for each move direction
       // [[math,rules]]
@@ -79,10 +81,8 @@ export function calculateMoves(piece, currentPos) {
           availableMoves.push(newPos);
         }
       });
-      break;
+      return availableMoves;
     default:
       return []
   }
-  //console.log(availableMoves);
-  return availableMoves;
 }

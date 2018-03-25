@@ -28,3 +28,20 @@
 .square:nth-child(56) ~ .square:nth-child(-2n+63) {
   background-color: #fff;
 }
+
+.square.available {
+  background: #a5d0a5 !important;
+  animation: pulse 0.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: #a5d0a5;
+  }
+  50% {
+    background-color: #8ebb8e;
+  }
+  100% {
+    background-color: #a5d0a5;
+  }
+}

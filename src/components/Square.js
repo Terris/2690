@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import '../stylesheets/square.css';
-
 import Piece from './Piece.js';
 
 
@@ -19,7 +18,7 @@ class Square extends Component {
 
   render() {
     return (
-      <div className="square" onClick={this.handleClick}>
+      <div className={`square ${(this.props.square.available) ? 'available' : ''}`} onClick={this.handleClick}>
         {this.renderSquare()}
       </div>
     )
@@ -28,6 +27,7 @@ class Square extends Component {
 
 function mapStateToProps(state) {
   return {
+    board: state.board,
     pieces: state.pieces
   }
 }
