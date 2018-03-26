@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import Draggable from 'react-draggable';
-import { highlightAvailableMoves, hideAvailableMoves } from '../actions';
+import { highlightAvailableMoves, hideAvailableMoves, resetPieces, selectPiece } from '../actions';
 import { calculateMoves } from '../utils';
 import { connect } from 'react-redux';
 import '../stylesheets/piece.css';
@@ -11,50 +11,72 @@ class Piece extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      x: 0,
-      y: 0,
+      isMoving: false,
+      selected: false,
       availableMoves: []
     }
-    this.handleMouseOver = this.handleMouseOver.bind(this);
-    this.handleMouseOut = this.handleMouseOut.bind(this);
   }
 
   componentDidMount() {
     var availableMoves = calculateMoves(
       this.props.piece.type, // The piece type
-      this.props.square.id, // The currentPosition
-      _.map( _.filter(this.props.board, s => { return s.piece !== ''  }), 'id') // occupied squares
+      this.props.piece.position, // The currentPosition
+      _.map( _.filter(this.props.squares, s => { return s.piece !== ''  }), 'id') // occupied squares
     );
     this.setState({
       availableMoves: availableMoves
     })
   }
 
-  handleMouseOver() {
+  handleMouseOver = () => {
     this.props.highlightAvailableMoves( this.state.availableMoves );
   }
 
-  handleMouseOut() {
-    this.props.hideAvailableMoves();
+  handleMouseOut = () => {
+    if(!this.state.selected){
+      this.props.hideAvailableMoves();
+    }
   }
 
-  handleDragStart() {}
-  handleDragEnd(){}
-  handleDrag(){}
+  handleClick = () => {
+    if (this.state.selected) {
+      this.setState({selected: false});
+      this.props.resetPieces();
+      this.props.hideAvailableMoves( this.state.availableMoves );
+    } else {
+      this.setState({selected: true});
+      this.props.resetPieces();
+      this.props.highlightAvailableMoves( this.state.availableMoves );
+      this.props.selectPiece(this.props.piece);
+    }
+  }
+
+  handleDragStart = () => { }
+
+  handleDragStop = () => { }
 
   render() {
     return(
-      <Draggable >
-        <div className="piece" onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut}>
-          <div className="piece_ui" style={{ backgroundImage: `url(/images/${this.props.piece.img})` }}></div>
-        </div>
-      </Draggable>
+      <div className={`piece ${this.state.selected ? 'selected' : ''}`}
+        //draggable="true"
+        onMouseOver={this.handleMouseOver}
+        onMouseOut={this.handleMouseOut}
+        onClick={this.handleClick}>
+        <img className="piece_ui" src={`/images/${this.props.piece.img}`} alt="" />
+      </div>
     )
   }
 }
 
 function mapStateToProps(state) {
-  return { board: state.board }
+  return {
+    squares: state.squares
+  }
 }
 
-export default connect(mapStateToProps, { highlightAvailableMoves, hideAvailableMoves })(Piece);
+export default connect(mapStateToProps, {
+  highlightAvailableMoves,
+  hideAvailableMoves,
+  resetPieces,
+  selectPiece
+})(Piece);

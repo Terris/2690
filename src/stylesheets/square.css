@@ -26,7 +26,13 @@
 .square.available {
   background: #a5d0a5 !important;
   animation: pulse 0.5s infinite;
+  cursor: pointer;
 }
+
+/* A piece is selected */
+.piece_selected .square:hover { border: 4px solid #d64646; }
+.piece_selected .square.available:hover { border: 4px solid green; }
+.piece_selected .square.has_piece:hover { border: none;  }
 
 @keyframes pulse {
   0% {

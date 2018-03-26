@@ -1,11 +1,11 @@
 import { piecesConstants } from '../constants'
 
-export default function(state = {}, action) {
+export default function(state = { }, action) {
   switch (action.type) {
     case piecesConstants.RESET_PIECES:
-      return {  }
-    case piecesConstants.UPDATE_PIECES:
-      return {...state, [action.payload.id]: action.payload }
+      return { }
+    case piecesConstants.SELECT_PIECE:
+      return { piece: action.payload }
     default:
       return state;
   }

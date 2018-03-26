@@ -1,25 +1,27 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { resetBoard } from '../actions';
+import { resetSquares } from '../actions';
 import '../stylesheets/board.css';
 import Square from './Square.js'
 
 class Board extends Component {
+
   constructor(props) {
     super(props);
-    this.props.resetBoard();
+    this.props.resetSquares();
   }
 
   renderSquares() {
-    return _.map(this.props.board, square => {
+    return _.map(this.props.squares, square => {
       return <Square key={square.id} square={square} />
     })
   }
 
   render() {
+    const { pieces } = this.props;
     return(
-      <div className="board">
+      <div className={`board ${pieces.piece ? 'piece_selected' : ''}`}>
         {this.renderSquares()}
       </div>
     )
@@ -28,7 +30,8 @@ class Board extends Component {
 
 function mapStateToProps(state) {
   return {
-    board: state.board,
+    squares: state.squares,
+    pieces: state.pieces
   }
 }
-export default connect(mapStateToProps, { resetBoard })(Board);
+export default connect(mapStateToProps, { resetSquares })(Board);

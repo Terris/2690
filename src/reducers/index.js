@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import BoardReducer from './BoardReducer';
+import SquaresReducer from './SquaresReducer';
 import PiecesReducer from './PiecesReducer';
 
 const rootReducer = combineReducers({
-  board: BoardReducer,
+  squares: SquaresReducer,
   pieces: PiecesReducer
 });
 

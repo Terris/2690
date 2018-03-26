@@ -6,21 +6,26 @@ import Piece from './Piece.js';
 
 class Square extends Component {
 
+  handleClick = () => {
+    console.log(this.props.square)
+  }
+
+  handleMouseOver = () =>{
+    console.log(this.props.square.id)
+  }
+
   renderSquare() {
     if ( this.props.square.piece ) {
-      return <Piece piece={this.props.square.piece} square={this.props.square} />
+      return <Piece piece={this.props.square.piece} />
     }
   }
 
-  handleClick = () => {
-    //console.log(this.props.square.id)
-  }
-
   render() {
+    const { square, pieces } = this.props;
     return (
-      <div className={`square ${(this.props.square.available) ? 'available' : ''}`}
+      <div className={`square ${square.piece ? 'has_piece' : ''} ${square.availableToSelectedPiece ? 'available' : ''}`}
         onClick={this.handleClick}
-        //onDragEnter={e => {console.log(this.props.square.id)}}
+        //onDragEnter={this.handleMouseOver}
         >
         {this.renderSquare()}
       </div>
@@ -30,7 +35,7 @@ class Square extends Component {
 
 function mapStateToProps(state) {
   return {
-    board: state.board,
+    squares: state.squares,
     pieces: state.pieces
   }
 }

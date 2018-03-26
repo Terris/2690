@@ -3,7 +3,7 @@
 * Styles for /components/Piece.js
 */
 
-.piece {  }
+.piece { width: 71px; height: 71px; }
 .piece img { width:71px; padding: 10px; }
 .piece:hover {  cursor: pointer; }
 
@@ -13,3 +13,5 @@
   background: none center center no-repeat;
   background-size: 80%;
 }
+
+.piece.selected { background: #ccc; }
