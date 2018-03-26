@@ -9,15 +9,15 @@ export function resetSquares() {
   };
 };
 
-export function highlightAvailableMoves( moves ) {
+export function highlightAvailableSquares( squares ) {
   return {
-    type: squaresConstants.HIGHLIGHT_AVAILABLE_MOVES,
-    payload: moves
+    type: squaresConstants.HIGHLIGHT_AVAILABLE_SQUARES,
+    payload: squares
   }
 }
 
-export function hideAvailableMoves() {
+export function hideAvailableSquares() {
   return {
-    type: squaresConstants.HIDE_AVAILABLE_MOVES
+    type: squaresConstants.HIDE_AVAILABLE_SQUARES
   }
 }

@@ -29,9 +29,7 @@ class Board extends Component {
 }
 
 function mapStateToProps(state) {
-  return {
-    squares: state.squares,
-    pieces: state.pieces
-  }
+  const { squares, pieces } = state;
+  return { squares, pieces };
 }
 export default connect(mapStateToProps, { resetSquares })(Board);

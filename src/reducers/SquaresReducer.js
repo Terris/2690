@@ -5,12 +5,12 @@ export default function(state = { }, action) {
   switch (action.type) {
     case squaresConstants.RESET_SQUARES:
       return action.payload
-    case squaresConstants.HIGHLIGHT_AVAILABLE_MOVES:
+    case squaresConstants.HIGHLIGHT_AVAILABLE_SQUARES:
       action.payload.forEach(square => {
         state[square].availableToSelectedPiece = true;
       })
       return { ...state }
-    case squaresConstants.HIDE_AVAILABLE_MOVES:
+    case squaresConstants.HIDE_AVAILABLE_SQUARES:
       _.forIn(_.filter(state, { availableToSelectedPiece: true }), (value) => {
         state[value.id].availableToSelectedPiece = false;
       });

@@ -19,7 +19,7 @@ export const squaresConfig = () => {
   // => ../config/piecesConfig.js
   function hasPiece(id){
     var match = _.findKey(piecesConfig, {position: id});
-    return (typeof match !== "undefined") ? piecesConfig[match] : ''
+    return (typeof match !== "undefined") ? piecesConfig[match].id : ''
   }
   // add [boardConfig.size] squares
   // to Obj.squares
