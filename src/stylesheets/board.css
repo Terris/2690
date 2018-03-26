@@ -4,6 +4,9 @@
 */
 
 .board {
+
+  perspective: 1000px;
+
   border: 1rem solid #43404d;
   width: 600px;
   height: 600px;

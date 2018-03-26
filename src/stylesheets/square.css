@@ -4,18 +4,12 @@
 */
 
 .square {
-  position: relative;
-
   text-align: center;
   height: 12.5%;
   width:  12.5%;
   max-height: 100vw;
   max-width: 100vw;
   background: #43404d;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
 }
 
 .square:nth-child(-2n+8),

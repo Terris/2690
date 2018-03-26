@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
+import Draggable from 'react-draggable';
 import { highlightAvailableMoves, hideAvailableMoves } from '../actions';
 import { calculateMoves } from '../utils';
 import { connect } from 'react-redux';
@@ -10,6 +11,8 @@ class Piece extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      x: 0,
+      y: 0,
       availableMoves: []
     }
     this.handleMouseOver = this.handleMouseOver.bind(this);
@@ -22,7 +25,6 @@ class Piece extends Component {
       this.props.square.id, // The currentPosition
       _.map( _.filter(this.props.board, s => { return s.piece !== ''  }), 'id') // occupied squares
     );
-
     this.setState({
       availableMoves: availableMoves
     })
@@ -36,23 +38,17 @@ class Piece extends Component {
     this.props.hideAvailableMoves();
   }
 
-  handleDragStart(e) {
-    console.log("dragging")
-  }
-  handleDragEnd(){
-    console.log("dropped")
-  }
-
+  handleDragStart() {}
+  handleDragEnd(){}
+  handleDrag(){}
 
   render() {
     return(
-      <div className="piece" onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut}>
-        <img src={`/images/${this.props.piece.img}`} alt={this.props.piece.name}
-          draggable='true'
-          onDragStart={this.handleDragStart}
-          onDragEnd={this.handleDragEnd}
-        />
-      </div>
+      <Draggable >
+        <div className="piece" onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut}>
+          <div className="piece_ui" style={{ backgroundImage: `url(/images/${this.props.piece.img})` }}></div>
+        </div>
+      </Draggable>
     )
   }
 }

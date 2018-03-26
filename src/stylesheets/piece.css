@@ -3,6 +3,13 @@
 * Styles for /components/Piece.js
 */
 
-.piece { position: absolute; z-index: 9999; top: 0; bottom: 0; }
-.piece img { width:100%; padding: 10px; }
-.piece:hover { background: #ccc; cursor: pointer; }
+.piece {  }
+.piece img { width:71px; padding: 10px; }
+.piece:hover {  cursor: pointer; }
+
+.piece_ui {
+  width: 71px;
+  height: 71px;
+  background: none center center no-repeat;
+  background-size: 80%;
+}

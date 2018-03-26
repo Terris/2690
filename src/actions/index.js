@@ -1,2 +1,2 @@
 export * from './BoardActions';
-export * from './PiecesActions';
+export * from './SquaresActions';

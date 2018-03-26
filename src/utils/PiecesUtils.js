@@ -9,6 +9,7 @@ export function pieceAxisPosition(position) {
 }
 
 // pieceInPath
+// compares new position with occupied squares
 function squareIsOccupied(square, occupiedSquares){
   return occupiedSquares.includes(square)
 }
@@ -62,7 +63,9 @@ export function calculateMoves(piece, currentPos, occupiedSquares) {
         [+15, (col > 1 && row < 7)],
         [+6,  (col > 2 && row > 1)]
       ]
-
+      // for each alg in algs
+      // push available positions
+      // to availableMoves[]
       algs.forEach(alg => {
         let newPos = currentPos + alg[0];
         if(alg[1] && !squareIsOccupied(newPos, occupiedSquares)) {

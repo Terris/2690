@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { resetBoard, resetPieces } from '../actions';
+import { resetBoard } from '../actions';
 import '../stylesheets/board.css';
 import Square from './Square.js'
 
@@ -9,7 +9,6 @@ class Board extends Component {
   constructor(props) {
     super(props);
     this.props.resetBoard();
-    this.props.resetPieces();
   }
 
   renderSquares() {
@@ -30,7 +29,6 @@ class Board extends Component {
 function mapStateToProps(state) {
   return {
     board: state.board,
-    pieces: state.pieces
   }
 }
-export default connect(mapStateToProps, { resetBoard, resetPieces })(Board);
+export default connect(mapStateToProps, { resetBoard })(Board);

@@ -13,12 +13,15 @@ class Square extends Component {
   }
 
   handleClick = () => {
-    console.log(this.props.square.id)
+    //console.log(this.props.square.id)
   }
 
   render() {
     return (
-      <div className={`square ${(this.props.square.available) ? 'available' : ''}`} onClick={this.handleClick}>
+      <div className={`square ${(this.props.square.available) ? 'available' : ''}`}
+        onClick={this.handleClick}
+        //onDragEnter={e => {console.log(this.props.square.id)}}
+        >
         {this.renderSquare()}
       </div>
     )
