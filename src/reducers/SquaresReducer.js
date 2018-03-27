@@ -15,6 +15,10 @@ export default function(state = { }, action) {
         state[value.id].availableToSelectedPiece = false;
       });
       return {...state }
+    case squaresConstants.ACCEPT_PIECE:
+      state[ _.findKey(state, { piece: action.payload.piece })].piece = '';
+      state[action.payload.square].piece = action.payload.piece;
+      return {...state}
     default:
       return state;
   }

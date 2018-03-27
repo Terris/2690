@@ -4,7 +4,7 @@ export const piecesConfig = {
   BISHOP_BLACK_ALPHA: {
     id: "BISHOP_BLACK_ALPHA",
     type: piecesConstants.BISHOP,
-    position: 59,
+    position: 59, //58
     img: 'bishop_black.svg',
     selected: false,
     availableMoves: []
@@ -12,7 +12,7 @@ export const piecesConfig = {
   KNIGHT_BLACK_ALPHA: {
     id: "KNIGHT_BLACK_ALPHA",
     type: piecesConstants.KNIGHT,
-    position: 45,
+    position: 63, //63
     img: 'knight_black.svg',
     selected: false,
     availableMoves: []

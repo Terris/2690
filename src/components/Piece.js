@@ -6,20 +6,13 @@ import {
   hideAvailableSquares,
   selectPiece
 } from '../actions';
-import { calculateMoves } from '../utils';
 import { connect } from 'react-redux';
 import '../stylesheets/piece.css';
 
 class Piece extends Component {
 
   componentDidMount() {
-    var availableMoves = calculateMoves(
-      this.props.piece.type, // The piece type
-      this.props.piece.position, // The currentPosition
-      _.map(this.props.pieces, p => { return p.position  }) // occupied squares
-    );
-
-    this.props.updateAvailableMoves(this.props.piece, availableMoves)
+    this.props.updateAvailableMoves()
   }
 
   handleMouseOver = () => {
@@ -30,6 +23,10 @@ class Piece extends Component {
   handleMouseOut = () => {
     if(!this.props.piece.selected) {
       this.props.hideAvailableSquares();
+      let selectedPiece = _.findKey(this.props.pieces, {selected: true});
+      if (selectedPiece) {
+        this.props.highlightAvailableSquares( this.props.pieces[selectedPiece].availableMoves)
+      }
     }
   }
 

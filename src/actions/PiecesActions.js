@@ -7,9 +7,23 @@ export function selectPiece(piece) {
   }
 };
 
-export function updateAvailableMoves(piece, moves) {
+export function updatePiecePosition(piece, square) {
   return {
-    type: piecesConstants.UPDATE_AVAILABLE_MOVES,
-    payload: {piece, moves}
+    type: piecesConstants.UPDATE_PIECE_POSITION,
+    payload: {piece, square}
   }
 };
+
+export function updateAvailableMoves(piece) {
+  return {
+    type: piecesConstants.UPDATE_AVAILABLE_MOVES,
+    payload: piece
+  }
+};
+
+export function movePiece(piece, position) {
+  return {
+    type: piecesConstants.MOVE_PIECE,
+    payload: { piece, position }
+  }
+}

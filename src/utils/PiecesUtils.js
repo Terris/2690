@@ -15,12 +15,12 @@ function squareIsOccupied(square, occupiedSquares){
 }
 
 // Calculate Available Moves
-export function calculateMoves(piece, currentPos, occupiedSquares) {
+export function calculateMoves(piece, occupiedSquares) {
   var availableMoves = [],
-    row = pieceAxisPosition(currentPos)[0],
-    col = pieceAxisPosition(currentPos)[1],
+    row = pieceAxisPosition(piece.position)[0],
+    col = pieceAxisPosition(piece.position)[1],
     algs = [];
-  switch(piece) {
+  switch(piece.type) {
     case piecesConstants.BISHOP:
       // Algorithms for each move direction
       // [up-left], [up-right], [down-right], [down-left]
@@ -37,7 +37,7 @@ export function calculateMoves(piece, currentPos, occupiedSquares) {
       algs.forEach(alg => {
         if ( alg[1] !== 0 ) {
           let i = 1;
-          let newPos = currentPos;
+          let newPos = piece.position;
           while(i <= alg[1]) {
             newPos += alg[0];
             if ( squareIsOccupied(newPos, occupiedSquares) ) {
@@ -61,13 +61,13 @@ export function calculateMoves(piece, currentPos, occupiedSquares) {
         [+10, (col < 7 && row < 8)],
         [+17, (col < 8 && row < 7)],
         [+15, (col > 1 && row < 7)],
-        [+6,  (col > 2 && row > 1)]
+        [+6,  (col > 2 && row < 8)]
       ]
       // for each alg in algs
       // push available positions
       // to availableMoves[]
       algs.forEach(alg => {
-        let newPos = currentPos + alg[0];
+        let newPos = piece.position + alg[0];
         if(alg[1] && !squareIsOccupied(newPos, occupiedSquares)) {
           availableMoves.push(newPos);
         }

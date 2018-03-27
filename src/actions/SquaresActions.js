@@ -21,3 +21,10 @@ export function hideAvailableSquares() {
     type: squaresConstants.HIDE_AVAILABLE_SQUARES
   }
 }
+
+export function acceptPiece(square, piece) {
+  return {
+    type: squaresConstants.ACCEPT_PIECE,
+    payload: {square, piece}
+  }
+}
