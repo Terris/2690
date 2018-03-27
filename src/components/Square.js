@@ -10,7 +10,6 @@ import { connect } from 'react-redux';
 import '../stylesheets/square.css';
 import Piece from './Piece.js';
 
-
 class Square extends Component {
   tryAcceptSquare = () => {
     if ( this.props.square.availableToSelectedPiece ) {
@@ -30,18 +29,9 @@ class Square extends Component {
     e.preventDefault();
     // required to be a valid drag target
   }
-  handleDragEnter = (e) => {
-    e.preventDefault();
-    this.refs.squareUI.classList.add('js_hover')
-  }
-  handleDragLeave = (e) => {
-    e.preventDefault;
-    this.refs.squareUI.classList.remove('js_hover')
-  }
 
   handleDrop = (e) => {
     e.preventDefault();
-    this.refs.squareUI.classList.remove('js_hover')
     this.tryAcceptSquare();
   }
 
