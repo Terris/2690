@@ -5,12 +5,17 @@
 
 .square {
   text-align: center;
-  height: 70px;
-  width:  70px;
+  height: 42px;
+  width:  42px;
   background: #393240;
   box-shadow: inset 0px 0px 20px -6px rgba(0,0,0,0.47);
 }
-
+@media ( min-width: 580px ) {
+  .square {
+    width: 70px;
+    height: 70px;
+  }
+}
 .square:nth-child(-2n+8),
 .square:nth-child(8) ~ .square:nth-child(-2n+15),
 .square:nth-child(16) ~ .square:nth-child(-2n+24),
