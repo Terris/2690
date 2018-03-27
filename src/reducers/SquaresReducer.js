@@ -19,13 +19,6 @@ export default function(state = { }, action) {
       state[ _.findKey(state, { piece: action.payload.piece })].piece = '';
       state[action.payload.square].piece = action.payload.piece;
       return {...state}
-    case squaresConstants.SET_DRAG_TARGET:
-      console.log(action.payload);
-      state[action.payload].dragTarget = true;
-      return {...state}
-    case squaresConstants.CLEAR_DRAG_TARGET:
-      state[ _.findKey(state, { dragTarget: true })].dragTarget = 'false';
-      return {...state}
     default:
       return state;
   }
