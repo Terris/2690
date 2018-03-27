@@ -29,7 +29,7 @@
 
 .square.available {
   background: #a5d0a5 !important;
-  animation: pulse 2s infinite;
+  animation: pulse 1s infinite;
   cursor: pointer;
 }
 
@@ -43,7 +43,7 @@
   box-shadow: inset 0px 0px 70px 0px rgba(183,18,18,0.75);
 }
 .square.available.indicator:hover {
-  animation: pulseShadowInGreen 0.2s 1;
+  animation: pulse 1s infinite, pulseShadowInGreen 0.2s 1;
   box-shadow: inset 0px 0px 70px 0px rgba(94,241,94,1);
 }
 .square.has_piece { animation: none !important; box-shadow: none !important; }
@@ -67,12 +67,12 @@
 }
 @keyframes pulse {
   0% {
-    background-color: #a5d0a5;
+    background-color: #e0f1cc;
   }
   50% {
     background-color: #8ebb8e;
   }
   100% {
-    background-color: #a5d0a5;
+    background-color: #e0f1cc;
   }
 }
