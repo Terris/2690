@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import { boardConstants } from '../constants'
 
 export default function(state = {}, action) {
