@@ -3,12 +3,12 @@
 * Styles for /components/Piece.js
 */
 
-.piece { width: 40px; height: 40px; }
-.piece img { width:40px; padding: 5px;  }
+.piece { width: 38px; height: 38px; }
+.piece img { width:38px; padding: 5px;  }
 .piece:hover {  cursor: pointer; }
 .piece_ui {
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
 }
 .piece.selected { background: #141019; box-shadow: 0px 0px 22px 0px rgba(0,0,0,0.75); }
 
