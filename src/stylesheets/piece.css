@@ -6,12 +6,10 @@
 .piece { width: 71px; height: 71px; }
 .piece img { width:71px; padding: 10px; }
 .piece:hover {  cursor: pointer; }
-
 .piece_ui {
   width: 71px;
   height: 71px;
   background: none center center no-repeat;
   background-size: 80%;
 }
-
-.piece.selected { background: #ccc; }
+.piece.selected { background: #7fa8d6; }

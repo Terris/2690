@@ -1,6 +1,11 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
-import { acceptPiece, selectPiece, updatePiecePosition } from '../actions';
+import {
+  acceptPiece,
+  selectPiece,
+  updatePiecePosition,
+  hideAvailableSquares,
+  clearDragTarget } from '../actions';
 import { connect } from 'react-redux';
 import '../stylesheets/square.css';
 import Piece from './Piece.js';
@@ -8,13 +13,28 @@ import Piece from './Piece.js';
 
 class Square extends Component {
 
-  handleClick = () => {
+  tryAcceptSquare = () => {
     if ( this.props.square.availableToSelectedPiece ) {
       const selectedPiece = _.findKey(this.props.pieces, {selected: true })
+      this.props.hideAvailableSquares();
       this.props.updatePiecePosition(selectedPiece, this.props.square.id);
       this.props.acceptPiece(this.props.square.id, selectedPiece);
       this.props.selectPiece();
     }
+  }
+
+  handleClick = () => {
+    this.tryAcceptSquare();
+  }
+
+  handleDragOver = (e) => {
+    e.preventDefault();
+    //console.log(e.target);
+  }
+
+  handleDrop = (e) => {
+    e.preventDefault();
+    this.tryAcceptSquare();
   }
 
   renderSquare() {
@@ -27,7 +47,10 @@ class Square extends Component {
     const { square } = this.props;
     return (
       <div className={`square ${square.piece ? 'has_piece' : ''} ${square.availableToSelectedPiece ? 'available' : ''}` }
-        onClick={this.handleClick}>
+        onClick={this.handleClick}
+        onDragOver={this.handleDragOver}
+        onDrop={this.handleDrop}
+        >
         {this.renderSquare()}
       </div>
     )
@@ -38,4 +61,9 @@ function mapStateToProps(state) {
   const { squares, pieces } = state;
   return { squares, pieces }
 }
-export default connect(mapStateToProps, { acceptPiece, selectPiece, updatePiecePosition })(Square);
+export default connect(mapStateToProps, {
+  acceptPiece,
+  selectPiece,
+  updatePiecePosition,
+  hideAvailableSquares,
+  clearDragTarget })(Square);

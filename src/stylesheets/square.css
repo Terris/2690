@@ -30,9 +30,8 @@
 }
 
 /* A piece is selected */
-.piece_selected .square:hover { border: 4px solid #d64646; }
-.piece_selected .square.available:hover { border: 4px solid green; }
-.piece_selected .square.has_piece:hover { border: none;  }
+.square.available:hover {  }
+.square.has_piece:hover { border: none;  }
 
 @keyframes pulse {
   0% {

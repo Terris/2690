@@ -6,7 +6,8 @@ square = {
   1: {
     id: 1,
     piece: {},
-    availableToSelectedPiece: boolean
+    availableToSelectedPiece: boolean,
+    dragTarget: boolean
   }
 }
 */
@@ -24,7 +25,12 @@ export const squaresConfig = () => {
   // add [boardConfig.size] squares
   // to Obj.squares
   while(i <= boardConfig.size) {
-    squares[i] = { id: i, piece: hasPiece(i), availableToSelectedPiece: false };
+    squares[i] = {
+      id: i,
+      piece: hasPiece(i),
+      availableToSelectedPiece: false,
+      dragTarget: false
+    };
     i ++;
   }
   return squares;

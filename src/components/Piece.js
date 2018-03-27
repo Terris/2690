@@ -15,6 +15,16 @@ class Piece extends Component {
     this.props.updateAvailableMoves()
   }
 
+  selectPiece = () => {
+    if( this.props.piece.selected ) {
+      this.props.selectPiece();
+      this.props.hideAvailableSquares();
+    } else {
+      this.props.selectPiece(this.props.piece);
+      this.props.highlightAvailableSquares( this.props.piece.availableMoves );
+    }
+  }
+
   handleMouseOver = () => {
     this.props.hideAvailableSquares();
     this.props.highlightAvailableSquares( this.props.piece.availableMoves );
@@ -31,23 +41,21 @@ class Piece extends Component {
   }
 
   handleClick = () => {
-    if( this.props.piece.selected ) {
-      this.props.selectPiece();
-      this.props.hideAvailableSquares();
-    } else {
-      this.props.selectPiece(this.props.piece);
-      this.props.highlightAvailableSquares( this.props.piece.availableMoves );
-    }
+    this.selectPiece();
   }
 
-  handleDragStart = () => { }
-
-  handleDragStop = () => { }
+  handleDragStart = () => {
+    if(!this.props.piece.selected) {
+      this.selectPiece();
+    }
+  }
 
   render() {
     const { piece } = this.props;
     return(
       <div className={`piece ${piece.selected ? 'selected' : ''}`}
+        draggable="true"
+        onDragStart={this.handleDragStart}
         onMouseOver={this.handleMouseOver}
         onMouseOut={this.handleMouseOut}
         onClick={this.handleClick}>
