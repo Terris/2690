@@ -7,16 +7,16 @@
   border: 10px solid #393240;
   background: #fff;
   margin: 2rem auto;
-  width: 356px;
-  height:356px;
+  width: 340px;
+  height:340px;
   display: flex;
   flex-wrap: wrap;
   box-shadow: 0px 0px 50px -4px rgba(0,0,0,0.6);
 }
 .board:after{
-    content: "";
-    display: block;
-    padding-top: 100%;
+  content: "";
+  display: block;
+  padding-top: 100%;
 }
 
 @media ( min-width: 580px ) {
