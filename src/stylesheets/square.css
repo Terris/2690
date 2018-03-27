@@ -31,7 +31,6 @@
 /* A piece is selected */
 .square.available:hover {  }
 .square.has_piece:hover { border: none;  }
-
 /* Indicator */
 .square.indicator { cursor: pointer; }
 .square.indicator:hover {
@@ -42,6 +41,9 @@
   animation: pulseShadowInGreen 0.2s 1;
   box-shadow: inset 0px 0px 70px 0px rgba(94,241,94,1);
 }
+.square.has_piece { animation: none !important; box-shadow: none !important; }
+
+/* Animations */
 @keyframes pulseShadowInRed {
   0% {
     box-shadow: inset 0px 0px 2px 0px rgba(183,18,18,0.75);
@@ -50,7 +52,6 @@
     box-shadow: inset 0px 0px 70px 0px rgba(183,18,18,0.75);
   }
 }
-
 @keyframes pulseShadowInGreen {
   0% {
     box-shadow: inset 0px 0px 2px 0px rgba(94,241,94,1);
@@ -59,7 +60,6 @@
     box-shadow: inset 0px 0px 70px 0px rgba(94,241,94,1);
   }
 }
-
 @keyframes pulse {
   0% {
     background-color: #a5d0a5;
