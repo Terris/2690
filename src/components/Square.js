@@ -12,10 +12,9 @@ import Piece from './Piece.js';
 
 
 class Square extends Component {
-
   tryAcceptSquare = () => {
     if ( this.props.square.availableToSelectedPiece ) {
-      const selectedPiece = _.findKey(this.props.pieces, {selected: true })
+      const selectedPiece = _.findKey(this.props.pieces, {selected: true });
       this.props.hideAvailableSquares();
       this.props.updatePiecePosition(selectedPiece, this.props.square.id);
       this.props.acceptPiece(this.props.square.id, selectedPiece);
@@ -29,11 +28,20 @@ class Square extends Component {
 
   handleDragOver = (e) => {
     e.preventDefault();
-    //console.log(e.target);
+    // required to be a valid drag target
+  }
+  handleDragEnter = (e) => {
+    e.preventDefault();
+    this.refs.squareUI.classList.add('js_hover')
+  }
+  handleDragLeave = (e) => {
+    e.preventDefault;
+    this.refs.squareUI.classList.remove('js_hover')
   }
 
   handleDrop = (e) => {
     e.preventDefault();
+    this.refs.squareUI.classList.remove('js_hover')
     this.tryAcceptSquare();
   }
 
@@ -46,10 +54,14 @@ class Square extends Component {
   render() {
     const { square } = this.props;
     return (
-      <div className={`square ${square.piece ? 'has_piece' : ''} ${square.availableToSelectedPiece ? 'available' : ''}` }
+      <div
+        className={`square ${square.piece ? 'has_piece' : ''} ${square.availableToSelectedPiece ? 'available' : ''} ${_.findKey(this.props.pieces, {selected: true }) ? 'indicator' : '' }`}
         onClick={this.handleClick}
         onDragOver={this.handleDragOver}
+        onDragEnter={this.handleDragEnter}
+        onDragLeave={this.handleDragLeave}
         onDrop={this.handleDrop}
+        ref="squareUI"
         >
         {this.renderSquare()}
       </div>

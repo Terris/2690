@@ -3,13 +3,13 @@
 * Styles for /components/Piece.js
 */
 
-.piece { width: 71px; height: 71px; }
-.piece img { width:71px; padding: 10px; }
+.piece { width: 70px; height: 70px; }
+.piece img { width:70px; padding: 10px; }
 .piece:hover {  cursor: pointer; }
 .piece_ui {
-  width: 71px;
-  height: 71px;
+  width: 70px;
+  height: 70px;
   background: none center center no-repeat;
   background-size: 80%;
 }
-.piece.selected { background: #7fa8d6; }
+.piece.selected { background: #beaece; }

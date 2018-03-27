@@ -4,14 +4,14 @@
 */
 
 .board {
-
-  perspective: 1000px;
-
-  border: 1rem solid #43404d;
-  width: 600px;
-  height: 600px;
+  border: 10px solid #393240;
+  background: #fff;
+  margin: 2rem auto;
+  width: 580px;
+  height: 580px;
   display: flex;
   flex-wrap: wrap;
+  box-shadow: 0px 0px 50px -4px rgba(0,0,0,0.6);
 }
 .board:after{
     content: "";

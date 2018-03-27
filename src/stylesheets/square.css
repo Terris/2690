@@ -5,11 +5,10 @@
 
 .square {
   text-align: center;
-  height: 12.5%;
-  width:  12.5%;
-  max-height: 100vw;
-  max-width: 100vw;
-  background: #43404d;
+  height: 70px;
+  width:  70px;
+  background: #393240;
+  box-shadow: inset 0px 0px 20px -6px rgba(0,0,0,0.47);
 }
 
 .square:nth-child(-2n+8),
@@ -20,18 +19,46 @@
 .square:nth-child(40) ~ .square:nth-child(-2n+47),
 .square:nth-child(48) ~ .square:nth-child(-2n+56),
 .square:nth-child(56) ~ .square:nth-child(-2n+63) {
-  background-color: #fff;
+  background: none;
 }
 
 .square.available {
   background: #a5d0a5 !important;
-  animation: pulse 0.5s infinite;
+  animation: pulse 2s infinite;
   cursor: pointer;
 }
 
 /* A piece is selected */
 .square.available:hover {  }
 .square.has_piece:hover { border: none;  }
+
+/* Indicator */
+.square.indicator { cursor: pointer; }
+.square.indicator:hover {
+  animation: pulseShadowInRed 0.2s 1;
+  box-shadow: inset 0px 0px 70px 0px rgba(183,18,18,0.75);
+}
+.square.available.indicator:hover {
+  animation: pulseShadowInGreen 0.2s 1;
+  box-shadow: inset 0px 0px 70px 0px rgba(94,241,94,1);
+}
+@keyframes pulseShadowInRed {
+  0% {
+    box-shadow: inset 0px 0px 2px 0px rgba(183,18,18,0.75);
+  }
+  100% {
+    box-shadow: inset 0px 0px 70px 0px rgba(183,18,18,0.75);
+  }
+}
+
+@keyframes pulseShadowInGreen {
+  0% {
+    box-shadow: inset 0px 0px 2px 0px rgba(94,241,94,1);
+  }
+  100% {
+    box-shadow: inset 0px 0px 70px 0px rgba(94,241,94,1);
+  }
+}
 
 @keyframes pulse {
   0% {
