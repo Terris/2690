@@ -14,16 +14,8 @@ export function updatePiecePosition(piece, square) {
   }
 };
 
-export function updateAvailableMoves(piece) {
+export function updateAvailableMoves() {
   return {
-    type: piecesConstants.UPDATE_AVAILABLE_MOVES,
-    payload: piece
+    type: piecesConstants.UPDATE_AVAILABLE_MOVES
   }
 };
-
-export function movePiece(piece, position) {
-  return {
-    type: piecesConstants.MOVE_PIECE,
-    payload: { piece, position }
-  }
-}

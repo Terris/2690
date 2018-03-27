@@ -4,8 +4,7 @@ import {
   acceptPiece,
   selectPiece,
   updatePiecePosition,
-  hideAvailableSquares,
-  clearDragTarget } from '../actions';
+  hideAvailableSquares } from '../actions';
 import { connect } from 'react-redux';
 import '../stylesheets/square.css';
 import Piece from './Piece.js';
@@ -48,10 +47,7 @@ class Square extends Component {
         className={`square ${square.piece ? 'has_piece' : ''} ${square.availableToSelectedPiece ? 'available' : ''} ${_.findKey(this.props.pieces, {selected: true }) ? 'indicator' : '' }`}
         onClick={this.handleClick}
         onDragOver={this.handleDragOver}
-        onDragEnter={this.handleDragEnter}
-        onDragLeave={this.handleDragLeave}
         onDrop={this.handleDrop}
-        ref="squareUI"
         >
         {this.renderSquare()}
       </div>
@@ -67,5 +63,4 @@ export default connect(mapStateToProps, {
   acceptPiece,
   selectPiece,
   updatePiecePosition,
-  hideAvailableSquares,
-  clearDragTarget })(Square);
+  hideAvailableSquares })(Square);

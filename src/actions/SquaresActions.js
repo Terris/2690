@@ -22,19 +22,6 @@ export function hideAvailableSquares() {
   }
 }
 
-export function setDragTarget(square_id) {
-  return {
-    type: squaresConstants.SET_DRAG_TARGET,
-    payload: square_id
-  }
-}
-
-export function clearDragTarget() {
-  return {
-    type: squaresConstants.CLEAR_DRAG_TARGET
-  }
-}
-
 export function acceptPiece(square, piece) {
   return {
     type: squaresConstants.ACCEPT_PIECE,
